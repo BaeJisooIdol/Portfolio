@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* TailwindCSS v4 configuration */
+@theme {
+    /* Custom colors */
+    --color-primary: oklch(50% 0.2 240);
+    --color-secondary: oklch(70% 0.15 180);
+    --color-accent: oklch(60% 0.25 30);
+    
+    /* Font families */
+    --font-sans: ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, monospace;
+    
+    /* Additional theme customizations */
+    --spacing: 0.25rem;
+    --radius: 0.5rem;
+    --shadow-color: 220 3% 15%;
+    --shadow-strength: 1%;
+
+}
+
+/* Include all template files in src directory */
+@source "./src/**/*.{tsx,jsx,ts,js,html}";
+
+/* Base styles */
+html {
+  font-size: 18px; /* Increased from default 16px */
+}
+
+/* Custom components */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .container {
+    @apply mx-auto w-full max-w-7xl px-4 md:px-6;
+  }
+  
+  .card {
+    @apply rounded-lg border p-6 shadow-sm bg-white dark:bg-gray-800;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-45 from-primary to-accent;
+  }
+  
+  .glass {
+    @apply bg-white/80 backdrop-blur-md dark:bg-black/50;
+  }
+}
